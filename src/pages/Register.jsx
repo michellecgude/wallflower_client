@@ -6,7 +6,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 export default function Register() {
-  // sets initial state for username and password to an empty string
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -39,6 +39,7 @@ export default function Register() {
   return (
     <div className="test">
       <Form>
+        <h1>Register Here.</h1>
         {/*  this is where you'll pass the function/props from the app to signup  */}
         <Form.Group controlId="registerForm">
           <Form.Label>Name</Form.Label>

@@ -6,7 +6,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 export default function Login() {
-  // sets initial state for username and password to an empty string
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -26,6 +26,7 @@ export default function Login() {
   return (
     <div className="test">
       <Form>
+        <h1>Login Here.</h1>
         {/*  this is where you'll pass the function/props from the app to signup  */}
         <Form.Group controlId="registerForm">
           <Form.Label>Username</Form.Label>
@@ -36,9 +37,6 @@ export default function Login() {
             value={username}
             onChange={handleUsername}
           />
-          <Form.Text className="text-muted">
-            Welcome to the club, social butterfly.
-          </Form.Text>
           <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
@@ -48,7 +46,7 @@ export default function Login() {
             onChange={handlePassword}
           />
           <Form.Text className="text-muted">
-            Keep your account secure!
+            Welcome back, social butterfly.
           </Form.Text>
         </Form.Group>
         <Button variant="dark" type="button" onClick={logValues}>
