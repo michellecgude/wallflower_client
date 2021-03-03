@@ -39,6 +39,11 @@ export default function LandingPage() {
             <Link to="/login" component={RLink}>
               Login.
             </Link>
+            <Typography>
+              <Link to="/dashboard" component={RLink}>
+                Dashboard.
+              </Link>
+            </Typography>
           </Typography>
         </Container>
       </ThemeProvider>
