@@ -146,11 +146,6 @@ export default function Dashboard() {
           >
             Welcome in, Michelle. {/* ${name}  */}
           </Typography>
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
         </Toolbar>
       </AppBar>
       <Drawer

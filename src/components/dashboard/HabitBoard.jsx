@@ -20,6 +20,8 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 
 import { DashboardNavigation } from "./DashNavigation";
 
+import Habits from "./data/Habits";
+
 export default function HabitTracker() {
   const drawerWidth = 240;
 
@@ -142,11 +144,6 @@ export default function HabitTracker() {
           >
             Habit Tracker. {/* ${name}  */}
           </Typography>
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -172,6 +169,7 @@ export default function HabitTracker() {
             <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHeightPaper}>
                 <h2>What habits would you like to cultivate today?</h2>
+                <Habits />
               </Paper>
             </Grid>
             <Grid item xs={12} md={4} lg={3}>
