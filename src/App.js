@@ -26,6 +26,8 @@ export default function App() {
   // global contextual user state for authentication
   const [isAuthed, setAuth] = useState(false);
 
+  // eventually add user roles to contextual state if possible ?
+
   // checks for user authentication, sets auth depending upon email & token validation
   const checkAuth = () => {
     if (localStorage.email && localStorage.token) setAuth(true);

@@ -1,5 +1,10 @@
+// react
 import React, { useState, useEffect } from "react";
 
+// axios
+import axios from "axios";
+
+// css
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -8,6 +13,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
 export default function UserLogin() {
+  // login the user (ie, get the user token)
+  axios.post("");
+
   const [login, setLogin] = useState({
     email: "",
     password: "",
