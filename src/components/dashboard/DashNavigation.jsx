@@ -11,7 +11,7 @@ import PeopleIcon from "@material-ui/icons/People";
 import BarChartIcon from "@material-ui/icons/BarChart";
 import LayersIcon from "@material-ui/icons/Layers";
 
-export const DashboardList = (
+export const DashboardNavigation = (
   <div>
     <ListItem button>
       <ListItemIcon>

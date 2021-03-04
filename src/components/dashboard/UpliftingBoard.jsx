@@ -18,7 +18,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 
-import { DashboardList } from "./DashNavigation";
+import { DashboardNavigation } from "./DashNavigation";
 
 export default function UpliftingContent() {
   const drawerWidth = 240;
@@ -164,7 +164,7 @@ export default function UpliftingContent() {
           </IconButton>
         </div>
         <Divider />
-        <List>{DashboardList}</List>
+        <List>{DashboardNavigation}</List>
         <Divider />
       </Drawer>
       <main className={classes.content}>
