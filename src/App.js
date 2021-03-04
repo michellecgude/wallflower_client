@@ -7,6 +7,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import LandingPage from "./components/LandingPage";
 import UserRegister from "./components/user_auth/UserRegister";
 import UserLogin from "./components/user_auth/UserLogin";
+import MoodPrompt from "./components/MoodPrompt";
 import Dashboard from "./components/dashboard/Dashboard";
 import MoodBoard from "./components/dashboard/MoodBoard";
 import HabitBoard from "./components/dashboard/HabitBoard.jsx";
@@ -22,6 +23,7 @@ export default function App() {
       <Route exact path="/" component={LandingPage} />
       <Route exact path="/register" component={UserRegister} />
       <Route exact path="/login" component={UserLogin} />
+      <Route exact path="/howareyou" component={MoodPrompt} />
       <Route exact path="/dashboard" component={Dashboard} />
       <Route exact path="/dashboard/moods" component={MoodBoard} />
       <Route exact path="/dashboard/habits" component={HabitBoard} />
