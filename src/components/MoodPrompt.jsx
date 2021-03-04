@@ -1,11 +1,11 @@
 import React from "react";
+import { Link as RLink } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import Link from "@material-ui/core/Link";
-import { makeStyles, createMuiTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles((theme) => ({
@@ -122,34 +122,34 @@ export default function MoodPrompt() {
       </Container>
       <Container className={classes.buttonContainer}>
         <Button className={classes.button} variant="primary">
-          happy
+          <RLink to="/dashboard">happy</RLink>
         </Button>
         <Button className={classes.button} variant="primary">
-          comfortable
+          <RLink to="/dashboard">comfortable</RLink>
         </Button>
         <Button className={classes.button} variant="primary">
-          calm
+          <RLink to="/dashboard">calm</RLink>
         </Button>
         <Button className={classes.button} variant="primary">
-          content
+          <RLink to="/dashboard">content</RLink>
         </Button>
         <Button className={classes.button} variant="primary">
-          neutral
+          <RLink to="/dashboard">neutral</RLink>
         </Button>
         <Button className={classes.button} variant="primary">
-          anxious
+          <RLink to="/dashboard">anxious</RLink>
         </Button>
         <Button className={classes.button} variant="primary">
-          sad
+          <RLink to="/dashboard">sad</RLink>
         </Button>
         <Button className={classes.button} variant="primary">
-          stressed
+          <RLink to="/dashboard">stressed</RLink>
         </Button>
         <Button className={classes.button} variant="primary">
-          overwhelmed
+          <RLink to="/dashboard">overwhelmed</RLink>
         </Button>
         <Button className={classes.button} variant="primary">
-          tired
+          <RLink to="/dashboard">tired</RLink>
         </Button>
       </Container>
     </React.Fragment>

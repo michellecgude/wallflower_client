@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from "recharts";
 
 const data = [
@@ -55,13 +55,13 @@ const renderCustomizedLabel = ({
 };
 
 export default function MoodChart() {
-  const [mood, setMood] = {
+  const [mood, setMood] = useState({
     id: "",
     user: "",
     name: "",
     created_at: "",
     note_entry: "",
-  };
+  });
 
   return (
     <ResponsiveContainer width="100%" height="100%">
