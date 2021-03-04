@@ -55,6 +55,14 @@ const renderCustomizedLabel = ({
 };
 
 export default function MoodChart() {
+  const [mood, setMood] = {
+    id: "",
+    user: "",
+    name: "",
+    created_at: "",
+    note_entry: "",
+  };
+
   return (
     <ResponsiveContainer width="100%" height="100%">
       <PieChart width="100%" height="100%">

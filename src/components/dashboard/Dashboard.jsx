@@ -20,6 +20,9 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 
 import { DashboardNavigation } from "./DashNavigation";
 import MoodChart from "./data/MoodChart";
+import Habits from "./data/Habits";
+import Meditations from "./data/Meditations";
+import UpliftingContent from "./data/UpliftingContent";
 
 export default function Dashboard() {
   const drawerWidth = 240;
