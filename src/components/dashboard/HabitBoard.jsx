@@ -20,7 +20,7 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 
 import { DashboardNavigation } from "./DashNavigation";
 
-import Habits from "./data/Habits";
+import Habits from "./dashboard_data/Habits";
 
 export default function HabitTracker() {
   const drawerWidth = 240;

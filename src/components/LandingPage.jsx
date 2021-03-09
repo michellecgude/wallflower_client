@@ -16,7 +16,6 @@ export default function LandingPage() {
       },
     },
   });
-
   return (
     <div>
       <ThemeProvider theme={theme}>

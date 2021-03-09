@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
+import { AuthContext } from "./../AuthContext";
+import AuthAPI from "./../axios_auth";
 
+// styles
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -9,15 +12,45 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
 export default function UserRegister() {
+  const { setAuthorized } = useContext(AuthContext);
+
+  setAuthorized(false);
+
   const [register, setRegister] = useState({
     firstName: "",
     lastName: "",
     email: "",
     username: "",
-    password1: "",
-    password2: "",
-    errors: {},
+    password: "",
+    re_password: "",
+    errors: {}, // stores error data from django here
   });
+
+  const handleRegisterChange = (event) => {
+    setRegister({
+      ...register,
+      [event.target.id]: event.target.value,
+    });
+  };
+
+  const handleRegisterSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await AuthAPI.post("/auth/users/", {
+        firstName: register.firstName,
+        lastName: register.lastName,
+        email: register.email,
+        username: register.username,
+        password: register.password,
+        re_password: register.re_password,
+      });
+      // console.log(response);
+      // return response;
+      return console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const useStyles = makeStyles((theme) => ({
     typography: {
@@ -37,15 +70,17 @@ export default function UserRegister() {
       margin: theme.spacing(3, 0, 2),
     },
   }));
-
   const classes = useStyles();
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <div className={`${classes.page} ${classes.typography}`}>
+      <div
+        className={`${classes.page} ${classes.typography}`}
+        onSubmit={handleRegisterSubmit}
+      >
         Sign up
-        <form className={`${classes.form}`} noValidate>
+        <form className={`${classes.form}`}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -57,6 +92,8 @@ export default function UserRegister() {
                 id="firstName"
                 label="First Name"
                 autoFocus
+                value={register.firstName}
+                onChange={handleRegisterChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -68,6 +105,8 @@ export default function UserRegister() {
                 label="Last Name"
                 name="lastName"
                 autoComplete="lname"
+                value={register.lastName}
+                onChange={handleRegisterChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -79,6 +118,8 @@ export default function UserRegister() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                value={register.email}
+                onChange={handleRegisterChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -90,6 +131,8 @@ export default function UserRegister() {
                 label="Username"
                 name="username"
                 autoComplete="username"
+                value={register.username}
+                onChange={handleRegisterChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -97,11 +140,27 @@ export default function UserRegister() {
                 variant="outlined"
                 required
                 fullWidth
-                name="password"
-                label="Password"
+                name="password1"
+                label="Enter your password"
                 type="password"
                 id="password"
+                value={register.password}
                 autoComplete="current-password"
+                onChange={handleRegisterChange}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="password2"
+                label="Confirm your password"
+                type="password"
+                id="re_password"
+                value={register.re_password}
+                autoComplete="current-password"
+                onChange={handleRegisterChange}
               />
             </Grid>
           </Grid>

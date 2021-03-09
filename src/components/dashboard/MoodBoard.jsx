@@ -19,7 +19,7 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 
 import { DashboardNavigation } from "./DashNavigation";
-import MoodChart from "./data/MoodChart";
+import MoodChart from "./dashboard_data/MoodChart";
 
 export default function MoodTracker() {
   const drawerWidth = 240;

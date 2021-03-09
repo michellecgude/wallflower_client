@@ -1,14 +1,15 @@
-// react imports
+// import { useHistory, Redirect, Route, Switch } from "react-router-dom";
+
 import React, { useState, useEffect } from "react";
-import { useHistory, Redirect, Route, Switch } from "react-router-dom";
+import { Route } from "react-router-dom";
+
+import { AuthContext } from "./components/user_auth/AuthContext";
 
 // user component imports
-import Context from "./components/user_auth/Context";
-import UserRegister from "./components/user_auth/UserRegister";
-import UserLogin from "./components/user_auth/UserLogin";
+import UserRegister from "./components/user_auth/register/UserRegister";
+import UserLogin from "./components/user_auth/login/UserLogin";
 
 // page component imports
-import PrivateRoute from "./components/PrivateRoute";
 import LandingPage from "./components/LandingPage";
 
 // dashboard component imports
@@ -23,26 +24,21 @@ import UpliftingBoard from "./components/dashboard/UpliftingBoard";
 import "./App.css";
 
 export default function App() {
-  // global contextual user state for authentication
-  const [isAuthed, setAuth] = useState(false);
-
-  // eventually add user roles to contextual state if possible ?
-
-  // checks for user authentication, sets auth depending upon email & token validation
-  const checkAuth = () => {
-    if (localStorage.email && localStorage.token) setAuth(true);
-  };
+  const [authorized, setAuthorized] = useState(false);
 
   useEffect(() => {
-    checkAuth();
+    if (localStorage.getItem.email && localStorage.getItem.access_token) {
+      setAuthorized(true);
+    }
   }, []);
 
   return (
     <div className="App">
-      <Context.Provider
-        globalAuthValues={{
-          isAuthed,
-          setAuth,
+      <AuthContext.Provider
+        value={{
+          authorized,
+          setAuthorized,
+          // ...
         }}
       >
         <Route exact path="/" component={LandingPage} />
@@ -62,7 +58,7 @@ export default function App() {
           path="/dashboard/upliftingcontent"
           component={UpliftingBoard}
         />
-      </Context.Provider>
+      </AuthContext.Provider>
 
       {/* <Switch>
         <PrivateRoute exact path="/dashboard" component={Dashboard} />

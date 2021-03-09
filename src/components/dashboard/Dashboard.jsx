@@ -19,10 +19,10 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 
 import { DashboardNavigation } from "./DashNavigation";
-import MoodChart from "./data/MoodChart";
-import Habits from "./data/Habits";
-import Meditations from "./data/Meditations";
-import UpliftingContent from "./data/UpliftingContent";
+import MoodChart from "./dashboard_data/MoodChart";
+import Habits from "./dashboard_data/Habits";
+import Meditations from "./dashboard_data/Meditations";
+import UpliftingContent from "./dashboard_data/UpliftingContent";
 
 export default function Dashboard() {
   const drawerWidth = 240;
