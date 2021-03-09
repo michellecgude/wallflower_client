@@ -11,6 +11,7 @@ import UserLogin from "./components/user_auth/login/UserLogin";
 
 // page component imports
 import LandingPage from "./components/LandingPage";
+import UserRolePrompt from "./components/user_auth/register/UserRolePrompt";
 
 // dashboard component imports
 import Dashboard from "./components/dashboard/Dashboard";
@@ -43,6 +44,7 @@ export default function App() {
       >
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/register" component={UserRegister} />
+        <Route exact path="/reason" component={UserRolePrompt} />
         <Route exact path="/login" component={UserLogin} />
         <Route exact path="/howareyou" component={MoodPrompt} />
         <Route exact path="/dashboard" component={Dashboard} />

@@ -3,12 +3,15 @@ import { AuthContext } from "./../AuthContext";
 import AuthAPI from "./../axios_auth";
 
 // styles
+import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/core/styles";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormHelperText from "@material-ui/core/FormHelperText";
 import Container from "@material-ui/core/Container";
 
 export default function UserRegister() {
@@ -23,7 +26,7 @@ export default function UserRegister() {
     username: "",
     password: "",
     re_password: "",
-    errors: {}, // stores error data from django here
+    errors: {},
   });
 
   const handleRegisterChange = (event) => {
@@ -75,12 +78,9 @@ export default function UserRegister() {
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <div
-        className={`${classes.page} ${classes.typography}`}
-        onSubmit={handleRegisterSubmit}
-      >
+      <div className={`${classes.page} ${classes.typography}`}>
         Sign up
-        <form className={`${classes.form}`}>
+        <form className={`${classes.form}`} onSubmit={handleRegisterSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -104,7 +104,7 @@ export default function UserRegister() {
                 id="lastName"
                 label="Last Name"
                 name="lastName"
-                autoComplete="lname"
+                autoComplete="lastName"
                 value={register.lastName}
                 onChange={handleRegisterChange}
               />
@@ -175,11 +175,7 @@ export default function UserRegister() {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link
-                href="http://localhost:3000/login"
-                variant="body2"
-                className={classes.typography}
-              >
+              <Link to="/login" variant="body2" className={classes.typography}>
                 Already have an account? Sign in
               </Link>
             </Grid>
