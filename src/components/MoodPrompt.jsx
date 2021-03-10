@@ -1,5 +1,11 @@
 // react
-import React, { useState, useContext, useEffect } from "react";
+import React, {
+  useState,
+  useContext,
+  useEffect,
+  useRef,
+  useCallback,
+} from "react";
 import { useHistory } from "react-router-dom";
 
 // api
@@ -76,18 +82,21 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MoodPrompt() {
+  const inputValue = useRef();
+
   const { moods, setMoods } = useContext(WallflowerContext);
 
   // mood request, in progress.... ?
-  const [mood, setMood] = useState(null);
+  const [mood, setMood] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // console.log(mood);
+    console.log("mood submitted!");
+    console.log(inputValue.current.value);
   };
 
-  const saveMood = () => {
-    console.log("it works!");
+  const handleChange = () => {
+    console.log("handle change works!");
     // let moods = {
     //   happy: mood.happy,
     //   comfortable: mood.comfortable,
@@ -100,7 +109,6 @@ export default function MoodPrompt() {
     //   overwhelmed: mood.overwhelmed,
     //   tired: mood.tired,
     // };
-
     // axiosAUTH
     //   .post(`/data/moods/`, moods)
     //   .then((response) => {
@@ -112,7 +120,6 @@ export default function MoodPrompt() {
     //   .catch((event) => {
     //     console.log(event);
     //   });
-
     //   dataAPI
     //     .createMoods(moods)
     //     .then((response) => {
@@ -171,15 +178,22 @@ export default function MoodPrompt() {
         </Typography>
       </Container>
       <Container className={classes.buttonContainer}>
-        <form type="hidden" method="POST" onSubmit={handleSubmit}>
+        <form type="hidden" onSubmit={handleSubmit}>
           <Button
+            type="submit"
             className={classes.button}
             variant="primary"
-            onClick={saveMood}
+            onClick={handleChange}
           >
             happy
-            {/* <input type="hidden" name="topic" value={} /> */}
+            <input
+              type="hidden"
+              name="value"
+              ref={inputValue}
+              value="Hamsters"
+            />
           </Button>
+
           {/* <Button className={classes.button} variant="primary">
           comfortable
         </Button>
