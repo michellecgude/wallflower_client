@@ -1,8 +1,12 @@
 // react
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 // api
 import AuthAPI from "../axios_auth";
+
+// context
+import WallflowerContext from "./../WallflowerContext";
 
 // cs
 import Button from "@material-ui/core/Button";
@@ -18,6 +22,10 @@ export default function UserLogin() {
     password: "",
     errors: {},
   });
+
+  const { setVerified } = useContext(WallflowerContext);
+
+  const history = useHistory();
 
   const handleChange = (event) =>
     setLogin({ ...login, [event.target.id]: event.target.value });
@@ -36,6 +44,7 @@ export default function UserLogin() {
       .catch((error) => {
         throw error;
       });
+    history.push("/howareyou");
   };
 
   const useStyles = makeStyles((theme) => ({
@@ -97,8 +106,6 @@ export default function UserLogin() {
           <Button
             type="submit"
             fullWidth
-            variant="contained"
-            color="primary"
             className={`${classes.submit} ${classes.typography}`}
           >
             Sign Up

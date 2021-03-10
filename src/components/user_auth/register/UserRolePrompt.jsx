@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { AuthContext } from "./../AuthContext";
+import { WallflowerContext } from "../WallflowerContext";
 import AuthAPI from "./../axios_auth";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -10,10 +10,6 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import Button from "@material-ui/core/Button";
 
 export default function UserRolePrompt() {
-  const { setAuthorized } = useContext(AuthContext);
-
-  setAuthorized(false);
-
   const [role, setRole] = useState({
     demographic: "",
   });

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { AuthContext } from "./../AuthContext";
+import { WallflowerContext } from "../WallflowerContext";
 import AuthAPI from "./../axios_auth";
 
 // styles
@@ -12,10 +12,6 @@ import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 
 export default function UserRegister() {
-  const { setAuthorized } = useContext(AuthContext);
-
-  setAuthorized(false);
-
   const [register, setRegister] = useState({
     firstName: "",
     lastName: "",

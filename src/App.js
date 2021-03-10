@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Route } from "react-router-dom";
 
-import { AuthContext } from "./components/user_auth/AuthContext";
+import WallflowerContext from "./components/user_auth/WallflowerContext";
 
 // user component imports
 import UserRegister from "./components/user_auth/register/UserRegister";
@@ -25,21 +25,33 @@ import UpliftingBoard from "./components/dashboard/UpliftingBoard";
 import "./App.css";
 
 export default function App() {
-  const [authorized, setAuthorized] = useState(false);
+  // wallflower state
+  const [verified, setVerified] = useState(false); // checks whether user is logged in or not depening upon token
+  const [moods, setMoods] = useState([]);
+  const [habits, setHabits] = useState([]);
+  const [meditations, setMeditations] = useState([]);
+  const [uplifting, setUplifting] = useState([]);
 
   useEffect(() => {
     if (localStorage.getItem.email && localStorage.getItem.access_token) {
-      setAuthorized(true);
+      setVerified(true);
     }
   }, []);
 
   return (
     <div className="App">
-      <AuthContext.Provider
+      <WallflowerContext.Provider
         value={{
-          authorized,
-          setAuthorized,
-          // ...
+          verified,
+          setVerified,
+          moods,
+          setMoods,
+          habits,
+          setHabits,
+          meditations,
+          setMeditations,
+          uplifting,
+          setUplifting,
         }}
       >
         <Route exact path="/" component={LandingPage} />
@@ -60,7 +72,7 @@ export default function App() {
           path="/dashboard/upliftingcontent"
           component={UpliftingBoard}
         />
-      </AuthContext.Provider>
+      </WallflowerContext.Provider>
 
       {/* <Switch>
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
