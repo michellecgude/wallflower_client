@@ -3,7 +3,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 // api
-import AuthAPI from "../axios_auth";
+import axiosAUTH from "../axios_auth";
 
 // context
 import WallflowerContext from "./../WallflowerContext";
@@ -32,12 +32,14 @@ export default function UserLogin() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    AuthAPI.post("/jwtoken/obtain/", {
-      email: login.email,
-      password: login.password,
-    })
+    axiosAUTH
+      .post("/jwtoken/obtain/", {
+        email: login.email,
+        password: login.password,
+      })
       .then((result) => {
-        AuthAPI.defaults.headers["Authorization"] = "JWT " + result.data.access;
+        axiosAUTH.defaults.headers["Authorization"] =
+          "JWT " + result.data.access;
         localStorage.setItem("access_token", result.data.access);
         localStorage.setItem("refresh_token", result.data.refresh);
       })

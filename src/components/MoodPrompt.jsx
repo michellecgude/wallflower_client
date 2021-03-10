@@ -1,7 +1,13 @@
-import React, { useState, useEffect } from "react";
+// react
+import React, { useState, useContext, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 // api
-import AuthAPI from "./user_auth/axios_auth";
+import axiosAUTH from "./user_auth/axios_auth";
+// import axios from "axios";
+
+// context
+import WallflowerContext from "./user_auth/WallflowerContext";
 
 // css
 import { Link as RLink } from "react-router-dom";
@@ -14,7 +20,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
 import dataAPI from "./dashboard/dashboard_data/axios_data";
-import axios from "axios";
 
 // const getAllMoods = () => {
 //   return dataAPI.get("/data/moods");
@@ -71,6 +76,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MoodPrompt() {
+  const { moods, setMoods } = useContext(WallflowerContext);
+
   // mood request, in progres.... ?
   const [mood, setMood] = useState({
     happy: "",
@@ -99,30 +106,30 @@ export default function MoodPrompt() {
       tired: mood.tired,
     };
 
-    axios
-      .post(`https://wall-flower-api.herokuapp.com/data/moods/`, moods)
-      .then((response) => {
-        setMood({
-          happy: response.mood_type[1],
-        });
-        console.log(response.data);
-      })
+    axiosAUTH
+      .post(`/data/moods/`, moods)
+      // .then((response) => {
+      //   setMood({
+      //     happy: response.mood_type[1],
+      //   });
+      //   console.log(response.data);
+      // })
       .catch((event) => {
         console.log(event);
       });
 
-    dataAPI
-      .createMoods(moods)
-      .then((response) => {
-        setMood({
-          happy: response.moods.mood_type,
-          // happy: response,
-        });
-        console.log(response.data);
-      })
-      .catch((event) => {
-        console.log(event);
-      });
+    //   dataAPI
+    //     .createMoods(moods)
+    //     .then((response) => {
+    //       setMood({
+    //         happy: response.moods.mood_type,
+    //         // happy: response,
+    //       });
+    //       console.log(response.data);
+    //     })
+    //     .catch((event) => {
+    //       console.log(event);
+    //     });
   };
 
   const classes = useStyles();

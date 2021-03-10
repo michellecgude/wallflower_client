@@ -7,7 +7,8 @@ const axiosAUTH = axios.create({
   // timeout: 5000,
   headers: {
     // "Access-Control-Allow-Origin": "*",
-    Authorization: "JWT " + localStorage.getItem("access_token"),
+    Authorization:
+      "JWT " + localStorage.getItem("access_token", "refresh_token"),
     "Content-Type": "application/json",
     accept: "application/json",
   },
@@ -43,7 +44,7 @@ axiosAUTH.interceptors.response.use(
 
         if (tokenParts.exp > now) {
           return axiosAUTH
-            .post("/token/refresh/", { refresh: refreshToken })
+            .post("/jwtoken/refresh/", { refresh: refreshToken })
             .then((response) => {
               localStorage.setItem("access_token", response.data.access);
               localStorage.setItem("refresh_token", response.data.refresh);
