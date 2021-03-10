@@ -161,33 +161,87 @@ export default function MoodPrompt() {
             happy
           </Button>
 
-          {/* <Button className={classes.button} variant="primary">
-          comfortable
-        </Button>
-        <Button className={classes.button} variant="primary">
-          calm
-        </Button>
-        <Button className={classes.button} variant="primary">
-          content
-        </Button>
-        <Button className={classes.button} variant="primary">
-          neutral
-        </Button>
-        <Button className={classes.button} variant="primary">
-          anxious
-        </Button>
-        <Button className={classes.button} variant="primary">
-          sad
-        </Button>
-        <Button className={classes.button} variant="primary">
-          stressed
-        </Button>
-        <Button className={classes.button} variant="primary">
-          overwhelmed
-        </Button>
-        <Button className={classes.button} variant="primary">
-          tired
-        </Button> */}
+          <Button
+            type="submit"
+            className={classes.button}
+            variant="primary"
+            value="comfortable"
+            onClick={handleChange}
+          >
+            comfortable
+          </Button>
+          <Button
+            type="submit"
+            className={classes.button}
+            variant="primary"
+            value="calm"
+            onClick={handleChange}
+          >
+            calm
+          </Button>
+          <Button
+            type="submit"
+            className={classes.button}
+            variant="primary"
+            value="content"
+            onClick={handleChange}
+          >
+            content
+          </Button>
+          <Button
+            type="submit"
+            className={classes.button}
+            variant="primary"
+            value="neutral"
+            onClick={handleChange}
+          >
+            neutral
+          </Button>
+          <Button
+            type="submit"
+            className={classes.button}
+            variant="primary"
+            value="anxious"
+            onClick={handleChange}
+          >
+            anxious
+          </Button>
+          <Button
+            type="submit"
+            className={classes.button}
+            variant="primary"
+            value="sad"
+            onClick={handleChange}
+          >
+            sad
+          </Button>
+          <Button
+            type="submit"
+            className={classes.button}
+            variant="primary"
+            value="stressed"
+            onClick={handleChange}
+          >
+            stressed
+          </Button>
+          <Button
+            type="submit"
+            className={classes.button}
+            variant="primary"
+            value="overwhelmed"
+            onClick={handleChange}
+          >
+            overwhelmed
+          </Button>
+          <Button
+            type="submit"
+            className={classes.button}
+            variant="primary"
+            value="tired"
+            onClick={handleChange}
+          >
+            tired
+          </Button>
         </form>
       </Container>
     </React.Fragment>
