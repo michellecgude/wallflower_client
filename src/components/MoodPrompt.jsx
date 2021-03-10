@@ -78,45 +78,40 @@ const useStyles = makeStyles((theme) => ({
 export default function MoodPrompt() {
   const { moods, setMoods } = useContext(WallflowerContext);
 
-  // mood request, in progres.... ?
-  const [mood, setMood] = useState({
-    happy: "",
-    comfortable: "",
-    calm: "",
-    content: "",
-    neutral: "",
-    anxious: "",
-    sad: "",
-    stressed: "",
-    overwhelmed: "",
-    tired: "",
-  });
+  // mood request, in progress.... ?
+  const [mood, setMood] = useState(null);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // console.log(mood);
+  };
 
   const saveMood = () => {
-    let moods = {
-      happy: mood.happy,
-      comfortable: mood.comfortable,
-      calm: mood.calm,
-      content: mood.content,
-      neutral: mood.neutral,
-      anxious: mood.anxious,
-      sad: mood.sad,
-      stressed: mood.stressed,
-      overwhelmed: mood.overwhelmed,
-      tired: mood.tired,
-    };
+    console.log("it works!");
+    // let moods = {
+    //   happy: mood.happy,
+    //   comfortable: mood.comfortable,
+    //   calm: mood.calm,
+    //   content: mood.content,
+    //   neutral: mood.neutral,
+    //   anxious: mood.anxious,
+    //   sad: mood.sad,
+    //   stressed: mood.stressed,
+    //   overwhelmed: mood.overwhelmed,
+    //   tired: mood.tired,
+    // };
 
-    axiosAUTH
-      .post(`/data/moods/`, moods)
-      // .then((response) => {
-      //   setMood({
-      //     happy: response.mood_type[1],
-      //   });
-      //   console.log(response.data);
-      // })
-      .catch((event) => {
-        console.log(event);
-      });
+    // axiosAUTH
+    //   .post(`/data/moods/`, moods)
+    //   .then((response) => {
+    //     setMood({
+    //       happy: response.mood_type.happy,
+    //     });
+    //     console.log(response.data);
+    //   })
+    //   .catch((event) => {
+    //     console.log(event);
+    //   });
 
     //   dataAPI
     //     .createMoods(moods)
@@ -176,10 +171,16 @@ export default function MoodPrompt() {
         </Typography>
       </Container>
       <Container className={classes.buttonContainer}>
-        <Button className={classes.button} variant="primary" onClick={saveMood}>
-          happy
-        </Button>
-        {/* <Button className={classes.button} variant="primary">
+        <form type="hidden" method="POST" onSubmit={handleSubmit}>
+          <Button
+            className={classes.button}
+            variant="primary"
+            onClick={saveMood}
+          >
+            happy
+            {/* <input type="hidden" name="topic" value={} /> */}
+          </Button>
+          {/* <Button className={classes.button} variant="primary">
           comfortable
         </Button>
         <Button className={classes.button} variant="primary">
@@ -206,6 +207,7 @@ export default function MoodPrompt() {
         <Button className={classes.button} variant="primary">
           tired
         </Button> */}
+        </form>
       </Container>
     </React.Fragment>
   );
