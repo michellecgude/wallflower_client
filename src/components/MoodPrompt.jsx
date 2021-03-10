@@ -82,7 +82,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MoodPrompt() {
-  const inputValue = useRef();
+  const idValue = useRef();
+  const userValue = useRef();
+  const moodValue = useRef();
+  const createdValue = useRef();
+  const noteValue = useRef();
 
   const { moods, setMoods } = useContext(WallflowerContext);
 
@@ -92,7 +96,11 @@ export default function MoodPrompt() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("mood submitted!");
-    console.log(inputValue.current.value);
+    console.log(idValue.current.value);
+    console.log(userValue.current.value);
+    console.log(moodValue.current.value);
+    console.log(createdValue.current.value);
+    console.log(noteValue.current.value);
   };
 
   const handleChange = () => {
@@ -188,9 +196,38 @@ export default function MoodPrompt() {
             happy
             <input
               type="hidden"
+              id="id"
               name="value"
-              ref={inputValue}
-              value="Hamsters"
+              ref={idValue}
+              value="i am id"
+            />
+            <input
+              type="hidden"
+              id="user"
+              name="value"
+              ref={userValue}
+              value="i am user"
+            />
+            <input
+              type="hidden"
+              id="mood_type"
+              name="value"
+              ref={moodValue}
+              value="i am mood"
+            />
+            <input
+              type="hidden"
+              id="created_at"
+              name="value"
+              ref={createdValue}
+              value="i am created"
+            />
+            <input
+              type="hidden"
+              id="note_entry"
+              name="value"
+              ref={noteValue}
+              value="i am note"
             />
           </Button>
 
