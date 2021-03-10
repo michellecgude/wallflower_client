@@ -199,35 +199,35 @@ export default function MoodPrompt() {
               id="id"
               name="value"
               ref={idValue}
-              value="i am id"
+              // value="i am id"
             />
             <input
               type="hidden"
               id="user"
               name="value"
               ref={userValue}
-              value="i am user"
+              // value="i am user"
             />
             <input
               type="hidden"
               id="mood_type"
               name="value"
               ref={moodValue}
-              value="i am mood"
+              // value="i am mood"
             />
             <input
               type="hidden"
               id="created_at"
               name="value"
               ref={createdValue}
-              value="i am created"
+              // value="i am created"
             />
             <input
               type="hidden"
               id="note_entry"
               name="value"
               ref={noteValue}
-              value="i am note"
+              // value="i am note"
             />
           </Button>
 

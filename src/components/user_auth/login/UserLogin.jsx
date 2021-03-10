@@ -110,7 +110,7 @@ export default function UserLogin() {
             fullWidth
             className={`${classes.submit} ${classes.typography}`}
           >
-            Sign Up
+            Login
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
