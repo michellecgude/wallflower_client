@@ -9,9 +9,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormHelperText from "@material-ui/core/FormHelperText";
 import Container from "@material-ui/core/Container";
 
 export default function UserRegister() {
@@ -47,8 +44,6 @@ export default function UserRegister() {
         password: register.password,
         re_password: register.re_password,
       });
-      // console.log(response);
-      // return response;
       return console.log(response);
     } catch (error) {
       console.log(error);

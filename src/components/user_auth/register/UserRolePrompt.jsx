@@ -10,6 +10,10 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import Button from "@material-ui/core/Button";
 
 export default function UserRolePrompt() {
+  const { setAuthorized } = useContext(AuthContext);
+
+  setAuthorized(false);
+
   const [role, setRole] = useState({
     demographic: "",
   });
@@ -64,7 +68,9 @@ export default function UserRolePrompt() {
             value={role.demographic}
             onSubmit={handleRoleSubmit}
           >
-            {/* <MenuItem value="">I'm a frontline healthcare worker.</MenuItem> */}
+            <MenuItem value={role.demographic[3]}>
+              I'm a frontline healthcare worker.
+            </MenuItem>
             <MenuItem value={role.demographic[3]} onChange={handlePromptChange}>
               I'm unemployed.
             </MenuItem>

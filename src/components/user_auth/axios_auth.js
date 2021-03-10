@@ -2,7 +2,7 @@ import axios from "axios";
 
 const axiosAUTH = axios.create({
   baseURL: "https://wall-flower-api.herokuapp.com/",
-  timeout: 5000,
+  // timeout: 5000,
   headers: {
     // "Access-Control-Allow-Origin": "*",
     Authorization: "JWT " + localStorage.getItem("access_token"),
@@ -23,7 +23,7 @@ axiosAUTH.interceptors.response.use(
       const refresh_token = localStorage.getItem("refresh_token");
 
       return axiosAUTH
-        .post("/auth/jwt/refresh/", { refresh: refresh_token })
+        .post("jwtoken/refresh/", { refresh: refresh_token })
         .then((response) => {
           localStorage.setItem("access_token", response.data.access);
           localStorage.setItem("refresh_token", response.data.refresh);

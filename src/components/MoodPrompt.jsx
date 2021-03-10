@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+
 import { Link as RLink } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
@@ -7,6 +8,21 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+
+// import dataAPI from "./dashboard/dashboard_data/axios_data";
+import axios from "axios";
+
+// const getAllMoods = () => {
+//   return dataAPI.get("/data/moods");
+// };
+
+// const getSpecificMoods = (id) => {
+//   return dataAPI.get(`/data/moods/${id}`);
+// };
+
+// const createMoods = (data) => {
+//   return dataAPI.post("/data/moods", data);
+// };
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -50,33 +66,60 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const data = [
-  { name: "Happy", value: 400 },
-  { name: "Comfortable", value: 300 },
-  { name: "Calm", value: 300 },
-  { name: "Content", value: 200 },
-  { name: "Neutral", value: 200 },
-  { name: "Anxious", value: 400 },
-  { name: "Sad", value: 300 },
-  { name: "Stressed", value: 300 },
-  { name: "Overwhelmed", value: 200 },
-  { name: "Tired", value: 200 },
-];
-
-const COLORS = [
-  "#EBF0CD", // happy
-  "#F4E3CC", // comfortable
-  "#DFE2E7", // calm
-  "#EEE0F2", // content
-  "#D4E9D2", // neutral
-  "#F4DAD7", // anxious
-  "#DEDEDE", // sad
-  "#F9E8EE", // stressed
-  "#FFE2D8", // overwhelmed
-  "#CDCDCD", // tired
-];
-
 export default function MoodPrompt() {
+  const [mood, setMood] = useState({
+    happy: "",
+    comfortable: "",
+    calm: "",
+    content: "",
+    neutral: "",
+    anxious: "",
+    sad: "",
+    stressed: "",
+    overwhelmed: "",
+    tired: "",
+  });
+
+  const saveMood = () => {
+    let moods = {
+      happy: mood.happy,
+      comfortable: mood.comfortable,
+      calm: mood.calm,
+      content: mood.content,
+      neutral: mood.neutral,
+      anxious: mood.anxious,
+      sad: mood.sad,
+      stressed: mood.stressed,
+      overwhelmed: mood.overwhelmed,
+      tired: mood.tired,
+    };
+
+    // axios
+    //   .post(`https://wall-flower-api.herokuapp.com/data/moods/`, moods)
+    //   .then((response) => {
+    //     setMood({
+    //       happy: response.mood_type[1],
+    //     });
+    //     console.log(response.data);
+    //   })
+    //   .catch((event) => {
+    //     console.log(event);
+    //   });
+
+    // dataAPI
+    //   .createMoods(moods)
+    //   .then((response) => {
+    //     setMood({
+    //       happy: response.moods.mood_type,
+    //       // happy: response,
+    //     });
+    //     console.log(response.data);
+    //   })
+    //   .catch((event) => {
+    //     console.log(event);
+    //   });
+  };
+
   const classes = useStyles();
 
   return (
@@ -121,35 +164,45 @@ export default function MoodPrompt() {
         </Typography>
       </Container>
       <Container className={classes.buttonContainer}>
-        <Button className={classes.button} variant="primary">
-          <RLink to="/dashboard">happy</RLink>
+        <Button className={classes.button} variant="primary" onClick={saveMood}>
+          {/* <RLink to="/dashboard">happy</RLink> */}
+          happy
         </Button>
         <Button className={classes.button} variant="primary">
-          <RLink to="/dashboard">comfortable</RLink>
+          {/* <RLink to="/dashboard">comfortable</RLink> */}
+          comfortable
         </Button>
         <Button className={classes.button} variant="primary">
-          <RLink to="/dashboard">calm</RLink>
+          {/* <RLink to="/dashboard">calm</RLink> */}
+          calm
         </Button>
         <Button className={classes.button} variant="primary">
-          <RLink to="/dashboard">content</RLink>
+          {/* <RLink to="/dashboard">content</RLink> */}
+          content
         </Button>
         <Button className={classes.button} variant="primary">
-          <RLink to="/dashboard">neutral</RLink>
+          {/* <RLink to="/dashboard">neutral</RLink> */}
+          neutral
         </Button>
         <Button className={classes.button} variant="primary">
-          <RLink to="/dashboard">anxious</RLink>
+          {/* <RLink to="/dashboard">anxious</RLink> */}
+          anxious
         </Button>
         <Button className={classes.button} variant="primary">
-          <RLink to="/dashboard">sad</RLink>
+          {/* <RLink to="/dashboard">sad</RLink> */}
+          sad
         </Button>
         <Button className={classes.button} variant="primary">
-          <RLink to="/dashboard">stressed</RLink>
+          {/* <RLink to="/dashboard">stressed</RLink> */}
+          stressed
         </Button>
         <Button className={classes.button} variant="primary">
-          <RLink to="/dashboard">overwhelmed</RLink>
+          {/* <RLink to="/dashboard">overwhelmed</RLink> */}
+          overwhelmed
         </Button>
         <Button className={classes.button} variant="primary">
-          <RLink to="/dashboard">tired</RLink>
+          {/* <RLink to="/dashboard">tired</RLink> */}
+          tired
         </Button>
       </Container>
     </React.Fragment>

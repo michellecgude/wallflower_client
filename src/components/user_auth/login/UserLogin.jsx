@@ -1,6 +1,9 @@
 // react
 import React, { useState, useEffect } from "react";
 
+// api
+import AuthAPI from "./../axios_auth";
+
 // css
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -16,8 +19,24 @@ export default function UserLogin() {
     errors: {},
   });
 
-  const onChange = (event) =>
+  const handleChange = (event) =>
     setLogin({ ...login, [event.target.id]: event.target.value });
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await AuthAPI.post("/jwtoken/obtain/", {
+        email: login.email,
+        password: login.password,
+      });
+      AuthAPI.defaults.headers["Authorization"] = "JWT " + response.data.access;
+      localStorage.setItem("access_token", response.data.access);
+      localStorage.setItem("refresh_token", response.data.refresh);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  };
 
   const useStyles = makeStyles((theme) => ({
     typography: {
@@ -43,7 +62,7 @@ export default function UserLogin() {
       <CssBaseline />
       <div className={`${classes.page} ${classes.typography}`}>
         Login
-        <form className={`${classes.form}`}>
+        <form className={`${classes.form}`} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
@@ -55,6 +74,8 @@ export default function UserLogin() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                value={login.email}
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -68,6 +89,8 @@ export default function UserLogin() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                value={login.password}
+                onChange={handleChange}
               />
             </Grid>
           </Grid>
