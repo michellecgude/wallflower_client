@@ -9,14 +9,14 @@ import React, {
 import { useHistory } from "react-router-dom";
 
 // api
-import axiosAUTH from "./user_auth/axios_auth";
-// import axios from "axios";
+import AuthAPI from "./user_auth/axios_auth";
+import userID from "./user_auth/user_id_fetch";
 
 // context
-import WallflowerContext from "./user_auth/WallflowerContext";
+// import WallflowerContext from "./user_auth/WallflowerContext";
 
 // css
-import { Link as RLink } from "react-router-dom";
+// import { Link as RLink } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -25,7 +25,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
-import dataAPI from "./dashboard/dashboard_data/axios_data";
+// import dataAPI from "./dashboard/dashboard_data/axios_data";
 
 // const getAllMoods = () => {
 //   return dataAPI.get("/data/moods");
@@ -82,64 +82,28 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MoodPrompt() {
-  const idValue = useRef();
-  const userValue = useRef();
-  const moodValue = useRef();
-  const createdValue = useRef();
-  const noteValue = useRef();
+  const [mood, setMood] = useState({
+    mood_type: "",
+  });
 
-  const { moods, setMoods } = useContext(WallflowerContext);
+  const history = useHistory();
 
-  // mood request, in progress.... ?
-  const [mood, setMood] = useState("");
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("mood submitted!");
-    console.log(idValue.current.value);
-    console.log(userValue.current.value);
-    console.log(moodValue.current.value);
-    console.log(createdValue.current.value);
-    console.log(noteValue.current.value);
+    try {
+      const response = await AuthAPI.post("/data/moods/", {
+        user: localStorage.getItem("user_id"),
+        mood_type: mood.mood_type,
+      });
+      return console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+    // history.push("/dashboard"); make this specific to the user demographic !!!
   };
 
-  const handleChange = () => {
-    console.log("handle change works!");
-    // let moods = {
-    //   happy: mood.happy,
-    //   comfortable: mood.comfortable,
-    //   calm: mood.calm,
-    //   content: mood.content,
-    //   neutral: mood.neutral,
-    //   anxious: mood.anxious,
-    //   sad: mood.sad,
-    //   stressed: mood.stressed,
-    //   overwhelmed: mood.overwhelmed,
-    //   tired: mood.tired,
-    // };
-    // axiosAUTH
-    //   .post(`/data/moods/`, moods)
-    //   .then((response) => {
-    //     setMood({
-    //       happy: response.mood_type.happy,
-    //     });
-    //     console.log(response.data);
-    //   })
-    //   .catch((event) => {
-    //     console.log(event);
-    //   });
-    //   dataAPI
-    //     .createMoods(moods)
-    //     .then((response) => {
-    //       setMood({
-    //         happy: response.moods.mood_type,
-    //         // happy: response,
-    //       });
-    //       console.log(response.data);
-    //     })
-    //     .catch((event) => {
-    //       console.log(event);
-    //     });
+  const handleChange = (event) => {
+    mood.mood_type = event.target.value;
   };
 
   const classes = useStyles();
@@ -191,44 +155,10 @@ export default function MoodPrompt() {
             type="submit"
             className={classes.button}
             variant="primary"
+            value="happy"
             onClick={handleChange}
           >
             happy
-            <input
-              type="hidden"
-              id="id"
-              name="value"
-              ref={idValue}
-              // value="i am id"
-            />
-            <input
-              type="hidden"
-              id="user"
-              name="value"
-              ref={userValue}
-              // value="i am user"
-            />
-            <input
-              type="hidden"
-              id="mood_type"
-              name="value"
-              ref={moodValue}
-              // value="i am mood"
-            />
-            <input
-              type="hidden"
-              id="created_at"
-              name="value"
-              ref={createdValue}
-              // value="i am created"
-            />
-            <input
-              type="hidden"
-              id="note_entry"
-              name="value"
-              ref={noteValue}
-              // value="i am note"
-            />
           </Button>
 
           {/* <Button className={classes.button} variant="primary">
