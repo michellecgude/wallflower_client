@@ -6,6 +6,8 @@ import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
 
+import AuthAPI from "./user_auth/axios_auth";
+
 export default function LandingPage() {
   const theme = createMuiTheme({
     typography: {
@@ -16,6 +18,21 @@ export default function LandingPage() {
       },
     },
   });
+
+  const handleLogout = async () => {
+    try {
+      const response = await AuthAPI.post("blacklistoken/", {
+        refresh_token: localStorage.getItem("refresh_token"),
+      });
+      localStorage.removeItem("access_token");
+      localStorage.removeItem("refresh_token");
+      AuthAPI.defaults.headers["Authorization"] = null;
+      return response;
+    } catch (event) {
+      console.log(event);
+    }
+  };
+
   return (
     <div>
       <ThemeProvider theme={theme}>
@@ -44,6 +61,7 @@ export default function LandingPage() {
               </Link>
             </Typography>
           </Typography>
+          <button onClick={handleLogout}>Logout</button>
         </Container>
       </ThemeProvider>
     </div>

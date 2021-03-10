@@ -46,7 +46,7 @@ export default function App() {
         <Route exact path="/register" component={UserRegister} />
         <Route exact path="/reason" component={UserRolePrompt} />
         <Route exact path="/login" component={UserLogin} />
-        <Route exact path="/howareyou" component={MoodPrompt} />
+        <Route exact path="/howareyou/" component={MoodPrompt} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/dashboard/moods" component={MoodBoard} />
         <Route exact path="/dashboard/habits" component={HabitBoard} />

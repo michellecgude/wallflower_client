@@ -1,7 +1,9 @@
 import axios from "axios";
 
+const baseURL = "https://wall-flower-api.herokuapp.com/";
+
 const axiosAUTH = axios.create({
-  baseURL: "https://wall-flower-api.herokuapp.com/",
+  baseURL: baseURL,
   // timeout: 5000,
   headers: {
     // "Access-Control-Allow-Origin": "*",
@@ -16,30 +18,58 @@ axiosAUTH.interceptors.response.use(
   (error) => {
     const originalRequest = error.config;
 
+    // Prevent infinite loops early
     if (
+      error.response.status === 401 &&
+      originalRequest.url === baseURL + "jwtoken/refresh/"
+    ) {
+      window.location.href = "/login/";
+      return Promise.reject(error);
+    }
+
+    if (
+      error.response.data.code === "token_not_valid" &&
       error.response.status === 401 &&
       error.response.statusText === "Unauthorized"
     ) {
-      const refresh_token = localStorage.getItem("refresh_token");
+      const refreshToken = localStorage.getItem("refresh_token");
 
-      return axiosAUTH
-        .post("jwtoken/refresh/", { refresh: refresh_token })
-        .then((response) => {
-          localStorage.setItem("access_token", response.data.access);
-          localStorage.setItem("refresh_token", response.data.refresh);
+      if (refreshToken) {
+        const tokenParts = JSON.parse(atob(refreshToken.split(".")[1]));
 
-          axiosAUTH.defaults.headers["Authorization"] =
-            "JWT " + response.data.access;
-          originalRequest.headers["Authorization"] =
-            "JWT " + response.data.access;
+        // exp date in token is expressed in seconds, while now() returns milliseconds:
+        const now = Math.ceil(Date.now() / 1000);
+        console.log(tokenParts.exp);
 
-          return axiosAUTH(originalRequest);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+        if (tokenParts.exp > now) {
+          return axiosAUTH
+            .post("/token/refresh/", { refresh: refreshToken })
+            .then((response) => {
+              localStorage.setItem("access_token", response.data.access);
+              localStorage.setItem("refresh_token", response.data.refresh);
+
+              axiosAUTH.defaults.headers["Authorization"] =
+                "JWT " + response.data.access;
+              originalRequest.headers["Authorization"] =
+                "JWT " + response.data.access;
+
+              return axiosAUTH(originalRequest);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        } else {
+          console.log("Refresh token is expired", tokenParts.exp, now);
+          window.location.href = "/login/";
+        }
+      } else {
+        console.log("Refresh token not available.");
+        window.location.href = "/login/";
+      }
     }
-    return Promise.reject({ ...error });
+
+    // specific error handling done elsewhere
+    return Promise.reject(error);
   }
 );
 

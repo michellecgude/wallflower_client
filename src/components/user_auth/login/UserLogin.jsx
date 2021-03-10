@@ -2,9 +2,9 @@
 import React, { useState, useEffect } from "react";
 
 // api
-import AuthAPI from "./../axios_auth";
+import AuthAPI from "../axios_auth";
 
-// css
+// cs
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -24,18 +24,18 @@ export default function UserLogin() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      const response = await AuthAPI.post("/jwtoken/obtain/", {
-        email: login.email,
-        password: login.password,
+    AuthAPI.post("/jwtoken/obtain/", {
+      email: login.email,
+      password: login.password,
+    })
+      .then((result) => {
+        AuthAPI.defaults.headers["Authorization"] = "JWT " + result.data.access;
+        localStorage.setItem("access_token", result.data.access);
+        localStorage.setItem("refresh_token", result.data.refresh);
+      })
+      .catch((error) => {
+        throw error;
       });
-      AuthAPI.defaults.headers["Authorization"] = "JWT " + response.data.access;
-      localStorage.setItem("access_token", response.data.access);
-      localStorage.setItem("refresh_token", response.data.refresh);
-      return response;
-    } catch (error) {
-      throw error;
-    }
   };
 
   const useStyles = makeStyles((theme) => ({
