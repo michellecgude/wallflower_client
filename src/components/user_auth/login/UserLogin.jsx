@@ -6,7 +6,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 // CONTEXT IMPORT
-import WallflowerContext from "./../WallflowerContext";
+import WallflowerContext from "./../../../WallflowerContext";
 
 // MATERIAL UI IMPORTS
 import Button from "@material-ui/core/Button";

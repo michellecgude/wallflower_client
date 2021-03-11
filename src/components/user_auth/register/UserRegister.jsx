@@ -6,7 +6,7 @@ import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 
 // CONTEXT IMPORT
-import { WallflowerContext } from "../WallflowerContext";
+import WallflowerContext from "./../../../WallflowerContext";
 
 // MATERIAL UI IMPORTS
 import { makeStyles } from "@material-ui/core/styles";
@@ -94,26 +94,26 @@ export default function UserRegister() {
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="fname"
-                  name="first_name"
                   variant="outlined"
                   required
                   fullWidth
+                  autoFocus
                   id="first_name"
                   label="First Name"
-                  autoFocus
+                  name="first_name"
                   value={register.first_name}
                   onChange={handleChange}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
+                  autoComplete="last_name"
                   variant="outlined"
                   required
                   fullWidth
                   id="last_name"
                   label="Last Name"
                   name="last_name"
-                  autoComplete="last_name"
                   value={register.last_name}
                   onChange={handleChange}
                 />

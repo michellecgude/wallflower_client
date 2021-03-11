@@ -22,13 +22,10 @@ import Paper from "@material-ui/core/Paper";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
+import TextField from "@material-ui/core/TextField";
 
 // COMPONENTS
 import { DashboardNavigation } from "./DashNavigation";
-import MoodChart from "./dashboard_data/MoodChart";
-import Habits from "./dashboard_data/Habits";
-import Meditations from "./dashboard_data/Meditations";
-import UpliftingContent from "./dashboard_data/UpliftingContent";
 
 // MATERIAL UI STYLING
 const useStyles = makeStyles((theme) => ({
@@ -189,9 +186,7 @@ export default function Dashboard() {
               </Paper>
             </Grid>
             <Grid item xs={12} md={4} lg={3}>
-              <Paper className={fixedHeightPaper}>
-                <MoodChart />
-              </Paper>
+              <Paper className={fixedHeightPaper}></Paper>
             </Grid>
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>

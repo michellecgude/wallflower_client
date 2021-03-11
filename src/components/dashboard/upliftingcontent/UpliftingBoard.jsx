@@ -1,12 +1,14 @@
 // AXIOS IMPORT
-import AuthAPI from "./../axios/AuthAPI";
+import AuthAPI from "../../axios/AuthAPI";
 
 // REACT IMPORTS
 import React, { useState, useEffect } from "react";
 
+// CONTEXT IMPORT
+import WallflowerContext from "./../../../WallflowerContext";
+
 // COMPONENT IMPORTS
-import { DashboardNavigation } from "./DashNavigation";
-import Habits from "./dashboard_data/Habits";
+import { DashboardNavigation } from "./../DashNavigation";
 
 // MATERIAL UI IMPORTS
 import clsx from "clsx";
@@ -31,6 +33,7 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
+    flexDirection: "row",
   },
   toolbar: {
     paddingRight: 24,
@@ -100,7 +103,8 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     display: "flex",
     overflow: "auto",
-    flexDirection: "column",
+    flexDirection: "row",
+    height: "100%",
   },
   fixedHeight: {
     height: 240,
@@ -108,7 +112,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 const drawerWidth = 240;
 
-export default function HabitTracker() {
+export default function UpliftingContent() {
   // VARIABLES
   const [open, setOpen] = React.useState(true);
   const classes = useStyles();
@@ -149,7 +153,7 @@ export default function HabitTracker() {
             noWrap
             className={classes.title}
           >
-            Habit Tracker. {/* ${name}  */}
+            Uplifting Content
           </Typography>
         </Toolbar>
       </AppBar>
@@ -173,21 +177,26 @@ export default function HabitTracker() {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
-            <Grid item xs={12} md={8} lg={9}>
+            <Grid item xs={4} md={9} lg={9}>
               <Paper className={fixedHeightPaper}>
-                <h2>What habits would you like to cultivate today?</h2>
-                <Habits />
+                <h1>Today's Article</h1>
               </Paper>
             </Grid>
             <Grid item xs={12} md={4} lg={3}>
-              <Paper className={fixedHeightPaper}>
-                <h2>Filler.</h2>
+              <Paper className={classes.paper}>
+                <h2>Meditation Five</h2>
               </Paper>
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={6}>
               <Paper className={classes.paper}>
-                <h2>Filler.</h2>
+                What is it about these that makes you happy?
               </Paper>
+            </Grid>
+            <Grid item xs={3}>
+              <Paper className={classes.paper}>xs=3</Paper>
+            </Grid>
+            <Grid item xs={3}>
+              <Paper className={classes.paper}>xs=3</Paper>
             </Grid>
           </Grid>
         </Container>

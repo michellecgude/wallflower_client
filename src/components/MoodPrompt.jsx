@@ -1,4 +1,7 @@
-// react
+// AXIOS IMPORT
+import AuthAPI from "./axios/AuthAPI";
+
+// REACT IMPORTS
 import React, {
   useState,
   useContext,
@@ -8,10 +11,7 @@ import React, {
 } from "react";
 import { useHistory } from "react-router-dom";
 
-// api
-import AuthAPI from "./axios/AuthAPI";
-
-// css
+// MATERIAL UI IMPORTS
 // import { Link as RLink } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
@@ -21,6 +21,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
+// MATERIAL UI STYLING
 const useStyles = makeStyles((theme) => ({
   "@global": {
     ul: {
@@ -64,17 +65,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MoodPrompt() {
+  // VARIABLES
   const [mood, setMood] = useState({
     mood_type: "",
   });
-
   const history = useHistory();
+  const classes = useStyles();
 
+  // AXIOS
   AuthAPI.get("/auth/users/me").then((response) => {
-    // console.log(response.data.username);
     localStorage.setItem("user_id", response.data.id);
   });
 
+  // HANDLE FUNCTIONS
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -92,8 +95,6 @@ export default function MoodPrompt() {
   const handleChange = (event) => {
     mood.mood_type = event.target.value;
   };
-
-  const classes = useStyles();
 
   return (
     <React.Fragment>

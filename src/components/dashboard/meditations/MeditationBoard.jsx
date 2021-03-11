@@ -1,12 +1,14 @@
 // AXIOS IMPORT
-import AuthAPI from "./../axios/AuthAPI";
+import AuthAPI from "../../axios/AuthAPI";
 
 // REACT IMPORTS
 import React, { useState, useEffect } from "react";
 
+// CONTEXT IMPORT
+import WallflowerContext from "./../../../WallflowerContext";
+
 // COMPONENT IMPORTS
-import { DashboardNavigation } from "./DashNavigation";
-import Habits from "./dashboard_data/Habits";
+import { DashboardNavigation } from "./../DashNavigation";
 
 // MATERIAL UI IMPORTS
 import clsx from "clsx";
@@ -110,9 +112,35 @@ const drawerWidth = 240;
 
 export default function Meditations() {
   // VARIABLES
+  const [meditation, setMeditation] = useState({
+    name: "",
+    benefit: "",
+    length: "",
+    type_of_meditation: "",
+    meditation_link: "",
+  });
   const [open, setOpen] = React.useState(true);
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
+  // AXIOS
+  function getMeditations() {
+    AuthAPI.get("/data/frontline-meditations/", {
+      name: meditation.name,
+      benefit: meditation.benefit,
+      length: meditation.length,
+      type_of_meditation: meditation.type_of_meditation,
+      meditation_link: meditation.meditation_link,
+    })
+      .then((response) => {
+        setMeditation(response);
+      })
+      .catch((error) => console.log(error));
+  }
+
+  useEffect(() => {
+    getMeditations();
+  }, []);
 
   // HANDLE FUNCTIONS
   const handleDrawerOpen = () => {
@@ -175,7 +203,7 @@ export default function Meditations() {
           <Grid container spacing={3}>
             <Grid item xs={12} md={12} lg={12}>
               <Paper className={fixedHeightPaper}>
-                <h1>Meditation insights...</h1>
+                <h1>{meditation.name}</h1>
               </Paper>
             </Grid>
             <Grid item xs={12} md={4} lg={3}>

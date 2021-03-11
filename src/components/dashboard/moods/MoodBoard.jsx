@@ -1,12 +1,14 @@
 // AXIOS IMPORT
-import AuthAPI from "./../axios/AuthAPI";
+import AuthAPI from "../../axios/AuthAPI";
 
 // REACT IMPORTS
 import React, { useState, useEffect } from "react";
 
+// CONTEXT IMPORT
+import WallflowerContext from "./../../../WallflowerContext";
+
 // COMPONENT IMPORTS
-import { DashboardNavigation } from "./DashNavigation";
-import MoodChart from "./dashboard_data/MoodChart";
+import { DashboardNavigation } from "./../DashNavigation";
 
 // MATERIAL UI IMPORTS
 import clsx from "clsx";
@@ -174,9 +176,7 @@ export default function MoodTracker() {
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
             <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}>
-                <MoodChart />
-              </Paper>
+              <Paper className={fixedHeightPaper}></Paper>
             </Grid>
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
