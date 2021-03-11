@@ -1,3 +1,11 @@
 # Wallflower | Frontend
 
-_this readme is currently under construction..._
+## GENERAL ASSEMBLY : PROJECT FOUR
+
+# ABOUT
+
+Wallflower is a COVID-19 mental health application. This is the frontend react application for the server side.
+
+### NOTE
+
+Still in progress.
