@@ -1,6 +1,8 @@
+// REACT IMPORTS
 import React from "react";
 import { Link as RLink } from "react-router-dom";
 
+// MATERIAL UI IMPORTS
 import Link from "@material-ui/core/Link";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";

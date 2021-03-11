@@ -22,7 +22,7 @@
     "sweetalert2": "^10.15.5",
     "web-vitals": "^1.1.0"
   },
-  "proxy": "https://wall-flower-api.herokuapp.com",
+  "proxy": "https://wallflower-api.herokuapp.com",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

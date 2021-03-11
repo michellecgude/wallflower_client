@@ -9,11 +9,7 @@ import React, {
 import { useHistory } from "react-router-dom";
 
 // api
-import AuthAPI from "./user_auth/axios_auth";
-import userID from "./user_auth/user_id_fetch";
-
-// context
-// import WallflowerContext from "./user_auth/WallflowerContext";
+import AuthAPI from "./axios/AuthAPI";
 
 // css
 // import { Link as RLink } from "react-router-dom";
@@ -24,20 +20,6 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-
-// import dataAPI from "./dashboard/dashboard_data/axios_data";
-
-// const getAllMoods = () => {
-//   return dataAPI.get("/data/moods");
-// };
-
-// const getSpecificMoods = (id) => {
-//   return dataAPI.get(`/data/moods/${id}`);
-// };
-
-// const createMoods = (data) => {
-//   return dataAPI.post("/data/moods", data);
-// };
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -87,6 +69,11 @@ export default function MoodPrompt() {
   });
 
   const history = useHistory();
+
+  AuthAPI.get("/auth/users/me").then((response) => {
+    // console.log(response.data.username);
+    localStorage.setItem("user_id", response.data.id);
+  });
 
   const handleSubmit = async (event) => {
     event.preventDefault();

@@ -1,9 +1,14 @@
+// AXIOS IMPORT
+import AuthAPI from "../../axios/AuthAPI";
+
+// REACT IMPORTS
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import { WallflowerContext } from "../WallflowerContext";
-import AuthAPI from "./../axios_auth";
 
-// styles
+// CONTEXT IMPORT
+import { WallflowerContext } from "../WallflowerContext";
+
+// MATERIAL UI IMPORTS
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -16,10 +21,31 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 
+// MATERIAL UI STYLING
+const useStyles = makeStyles((theme) => ({
+  typography: {
+    fontFamily: "Prompt",
+  },
+  page: {
+    marginTop: theme.spacing(8),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  form: {
+    width: "100%",
+    marginTop: theme.spacing(3),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
+
 export default function UserRegister() {
+  // VARIABLES
   const [register, setRegister] = useState({
-    firstName: "",
-    lastName: "",
+    first_name: "",
+    last_name: "",
     role: "",
     email: "",
     username: "",
@@ -27,7 +53,10 @@ export default function UserRegister() {
     re_password: "",
     errors: {},
   });
+  const history = useHistory();
+  const classes = useStyles();
 
+  // HANDLE FUNCTIONS
   const handleChange = (event) => {
     setRegister({
       ...register,
@@ -35,14 +64,12 @@ export default function UserRegister() {
     });
   };
 
-  const history = useHistory();
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       const response = await AuthAPI.post("/auth/users/", {
-        firstName: register.firstName,
-        lastName: register.lastName,
+        first_name: register.first_name,
+        last_name: register.last_name,
         role: register.role,
         email: register.email,
         username: register.username,
@@ -53,28 +80,8 @@ export default function UserRegister() {
     } catch (error) {
       console.log(error);
     }
-    history.push("/howareyou");
+    // history.push("/howareyou");
   };
-
-  const useStyles = makeStyles((theme) => ({
-    typography: {
-      fontFamily: "Prompt",
-    },
-    page: {
-      marginTop: theme.spacing(8),
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-    },
-    form: {
-      width: "100%",
-      marginTop: theme.spacing(3),
-    },
-    submit: {
-      margin: theme.spacing(3, 0, 2),
-    },
-  }));
-  const classes = useStyles();
 
   return (
     <Container component="main" maxWidth="xs">
@@ -87,14 +94,14 @@ export default function UserRegister() {
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="fname"
-                  name="firstName"
+                  name="first_name"
                   variant="outlined"
                   required
                   fullWidth
-                  id="firstName"
+                  id="first_name"
                   label="First Name"
                   autoFocus
-                  value={register.firstName}
+                  value={register.first_name}
                   onChange={handleChange}
                 />
               </Grid>
@@ -103,11 +110,11 @@ export default function UserRegister() {
                   variant="outlined"
                   required
                   fullWidth
-                  id="lastName"
+                  id="last_name"
                   label="Last Name"
-                  name="lastName"
-                  autoComplete="lastName"
-                  value={register.lastName}
+                  name="last_name"
+                  autoComplete="last_name"
+                  value={register.last_name}
                   onChange={handleChange}
                 />
               </Grid>

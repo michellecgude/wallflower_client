@@ -1,14 +1,14 @@
-// react
+// AXIOS IMPORT
+import AuthAPI from "../../axios/AuthAPI";
+
+// REACT IMPORTS
 import React, { useState, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
-// api
-import axiosAUTH from "../axios_auth";
-
-// context
+// CONTEXT IMPORT
 import WallflowerContext from "./../WallflowerContext";
 
-// cs
+// MATERIAL UI IMPORTS
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -16,58 +16,58 @@ import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
+// MATERIAL UI STYLING
+const useStyles = makeStyles((theme) => ({
+  typography: {
+    fontFamily: "Prompt",
+  },
+  page: {
+    marginTop: theme.spacing(8),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  form: {
+    width: "100%",
+    marginTop: theme.spacing(3),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
+
 export default function UserLogin() {
+  // VARIABLES
   const [login, setLogin] = useState({
     email: "",
     password: "",
     errors: {},
   });
-
-  const { setVerified } = useContext(WallflowerContext);
-
   const history = useHistory();
+  const { setVerified } = useContext(WallflowerContext);
+  const classes = useStyles();
 
+  // HANDLE FUNCTIONS
   const handleChange = (event) =>
     setLogin({ ...login, [event.target.id]: event.target.value });
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    axiosAUTH
-      .post("/jwtoken/obtain/", {
-        email: login.email,
-        password: login.password,
-      })
+    AuthAPI.post("/jwtoken/obtain/", {
+      email: login.email,
+      password: login.password,
+    })
       .then((result) => {
-        axiosAUTH.defaults.headers["Authorization"] =
-          "JWT " + result.data.access;
+        AuthAPI.defaults.headers["Authorization"] = "JWT " + result.data.access;
         localStorage.setItem("access_token", result.data.access);
         localStorage.setItem("refresh_token", result.data.refresh);
       })
       .catch((error) => {
         throw error;
       });
-    history.push("/howareyou");
+    // history.push("/howareyou");
   };
 
-  const useStyles = makeStyles((theme) => ({
-    typography: {
-      fontFamily: "Prompt",
-    },
-    page: {
-      marginTop: theme.spacing(8),
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-    },
-    form: {
-      width: "100%",
-      marginTop: theme.spacing(3),
-    },
-    submit: {
-      margin: theme.spacing(3, 0, 2),
-    },
-  }));
-  const classes = useStyles();
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />

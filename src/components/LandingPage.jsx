@@ -1,24 +1,30 @@
+// AXIOS IMPORTS
+import AuthAPI from "./axios/AuthAPI";
+
+// REACT IMPORTS
 import React from "react";
 import { Link as RLink } from "react-router-dom";
+
+// MATERIAL UI IMPORTS
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
 
-import AuthAPI from "./user_auth/axios_auth";
+// MATERIAL UI STYLING
+const theme = createMuiTheme({
+  typography: {
+    fontFamily: "Prompt",
+    h2: {
+      fontWeight: 600,
+      letterSpacing: 6,
+    },
+  },
+});
 
 export default function LandingPage() {
-  const theme = createMuiTheme({
-    typography: {
-      fontFamily: "Prompt",
-      h2: {
-        fontWeight: 600,
-        letterSpacing: 6,
-      },
-    },
-  });
-
+  // LOGOUT HANDLE (MOVE TO OWN PAGE?)
   const handleLogout = async () => {
     try {
       const response = await AuthAPI.post("blacklistoken/", {

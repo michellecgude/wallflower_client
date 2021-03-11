@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const baseURL = "https://wall-flower-api.herokuapp.com/";
+const baseURL = "https://wallflower-api.herokuapp.com/";
 
-const axiosAUTH = axios.create({
+const AuthAPI = axios.create({
   baseURL: baseURL,
   // timeout: 5000,
   headers: {
@@ -14,7 +14,7 @@ const axiosAUTH = axios.create({
   },
 });
 
-axiosAUTH.interceptors.response.use(
+AuthAPI.interceptors.response.use(
   (response) => response,
   (error) => {
     const originalRequest = error.config;
@@ -43,18 +43,17 @@ axiosAUTH.interceptors.response.use(
         console.log(tokenParts.exp);
 
         if (tokenParts.exp > now) {
-          return axiosAUTH
-            .post("/jwtoken/refresh/", { refresh: refreshToken })
+          return AuthAPI.post("/jwtoken/refresh/", { refresh: refreshToken })
             .then((response) => {
               localStorage.setItem("access_token", response.data.access);
               localStorage.setItem("refresh_token", response.data.refresh);
 
-              axiosAUTH.defaults.headers["Authorization"] =
+              AuthAPI.defaults.headers["Authorization"] =
                 "JWT " + response.data.access;
               originalRequest.headers["Authorization"] =
                 "JWT " + response.data.access;
 
-              return axiosAUTH(originalRequest);
+              return AuthAPI(originalRequest);
             })
             .catch((err) => {
               console.log(err);
@@ -74,4 +73,4 @@ axiosAUTH.interceptors.response.use(
   }
 );
 
-export default axiosAUTH;
+export default AuthAPI;

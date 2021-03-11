@@ -1,20 +1,18 @@
 // import { useHistory, Redirect, Route, Switch } from "react-router-dom";
 
+// REACT IMPORTS
 import React, { useState, useEffect } from "react";
 import { Route } from "react-router-dom";
 
+// CONTEXT IMPORT
 import WallflowerContext from "./components/user_auth/WallflowerContext";
 
-// user component imports
+// COMPONENTS
+import LandingPage from "./components/LandingPage";
 import UserRegister from "./components/user_auth/register/UserRegister";
 import UserLogin from "./components/user_auth/login/UserLogin";
-
-// page component imports
-import LandingPage from "./components/LandingPage";
-
-// dashboard component imports
-import Dashboard from "./components/dashboard/Dashboard";
 import MoodPrompt from "./components/MoodPrompt";
+import Dashboard from "./components/dashboard/Dashboard";
 import MoodBoard from "./components/dashboard/MoodBoard";
 import HabitBoard from "./components/dashboard/HabitBoard.jsx";
 import MeditationBoard from "./components/dashboard/MeditationBoard";
@@ -24,13 +22,14 @@ import UpliftingBoard from "./components/dashboard/UpliftingBoard";
 import "./App.css";
 
 export default function App() {
-  // wallflower state
+  // USE STATE VARIABLES
   const [verified, setVerified] = useState(false); // checks whether user is logged in or not depening upon token
   const [moods, setMoods] = useState([]);
   const [habits, setHabits] = useState([]);
   const [meditations, setMeditations] = useState([]);
   const [uplifting, setUplifting] = useState([]);
 
+  // USE EFFECT
   useEffect(() => {
     if (localStorage.getItem.email && localStorage.getItem.access_token) {
       setVerified(true);
