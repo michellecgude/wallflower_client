@@ -15,7 +15,6 @@ import MoodPrompt from "./components/MoodPrompt";
 import Dashboard from "./components/dashboard/Dashboard";
 import MoodBoard from "./components/dashboard/moods/MoodBoard";
 import AddMoods from "./components/dashboard/moods/AddMoods";
-import HabitDashboard from "./components/dashboard/habits/HabitDashboard";
 import MeditationBoard from "./components/dashboard/meditations/MeditationBoard";
 import AddMeditations from "./components/dashboard/meditations/AddMeditations";
 import UpliftingBoard from "./components/dashboard/upliftingcontent/UpliftingBoard";
@@ -28,7 +27,6 @@ export default function App() {
   // USE STATE VARIABLES
   const [verified, setVerified] = useState(false); // checks whether user is logged in or not depening upon token
   const [moods, setMoods] = useState([]);
-  const [habits, showHabits] = useState(false);
   const [meditations, setMeditations] = useState([]);
   const [uplifting, setUplifting] = useState([]);
 
@@ -47,8 +45,6 @@ export default function App() {
           setVerified,
           moods,
           setMoods,
-          habits,
-          showHabits,
           meditations,
           setMeditations,
           uplifting,
@@ -61,8 +57,6 @@ export default function App() {
         <Route exact path="/howareyou/" component={MoodPrompt} />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/dashboard/moods" component={MoodBoard} />
-        <Route exact path="/dashboard/habits" component={HabitDashboard} />
-
         <Route
           exact
           path="/dashboard/meditations"

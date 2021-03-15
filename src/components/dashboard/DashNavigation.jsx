@@ -9,7 +9,6 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
 import Brightness1RoundedIcon from "@material-ui/icons/Brightness1Rounded";
-import CategoryRoundedIcon from "@material-ui/icons/CategoryRounded";
 import LocalFloristRoundedIcon from "@material-ui/icons/LocalFloristRounded";
 import WbSunnyRoundedIcon from "@material-ui/icons/WbSunnyRounded";
 
@@ -29,14 +28,6 @@ export const DashboardNavigation = (
       </ListItemIcon>
       <Link to="/dashboard/moods" component={RLink}>
         <ListItemText primary="Mood Tracker" />
-      </Link>
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <CategoryRoundedIcon />
-      </ListItemIcon>
-      <Link to="/dashboard/habits" component={RLink}>
-        <ListItemText primary="Habit Tracker" />
       </Link>
     </ListItem>
     <ListItem button>
