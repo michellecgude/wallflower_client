@@ -1,0 +1,16 @@
+  // LOGOUT HANDLE (MOVE TO OWN PAGE?)
+  const handleLogout = async () => {
+    try {
+      const response = await AuthAPI.post("blacklistoken/", {
+        refresh_token: localStorage.getItem("refresh_token"),
+      });
+      localStorage.removeItem("access_token");
+      localStorage.removeItem("refresh_token");
+      AuthAPI.defaults.headers["Authorization"] = null;
+      return response;
+    } catch (event) {
+      console.log(event);
+    }
+  };
+
+        <button onClick={handleLogout}>Logout</button>

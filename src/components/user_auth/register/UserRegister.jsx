@@ -1,5 +1,5 @@
 // AXIOS IMPORT
-import AuthAPI from "../../axios/AuthAPI";
+import AuthAPI from "../../../axios-api/AuthAPI";
 
 // REACT IMPORTS
 import React, { useState, useContext } from "react";
@@ -215,7 +215,7 @@ export default function UserRegister() {
             <Grid container justify="flex-end">
               <Grid item>
                 <Link
-                  to="/login"
+                  to="localhost:3000/login"
                   variant="body2"
                   className={classes.typography}
                 >

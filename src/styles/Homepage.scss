@@ -1,0 +1,42 @@
+@import "fonts";
+
+* {
+  box-sizing: border-box;
+}
+
+.logo-container {
+  margin: 1%;
+}
+
+logo {
+  font-family: "Maragsa";
+  font-size: 21px;
+  letter-spacing: 1.5px;
+  position: sticky;
+}
+
+.introduction-header-text {
+  font-family: "Ovo";
+  font-size: 76px;
+}
+
+.introduction-sub-text {
+  font-family: "Epilogue";
+  font-size: 18px;
+  letter-spacing: 0.5px;
+}
+
+.container {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+.block {
+  min-width: 60%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

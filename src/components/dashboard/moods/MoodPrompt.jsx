@@ -1,5 +1,5 @@
 // AXIOS IMPORT
-import AuthAPI from "./axios/AuthAPI";
+import AuthAPI from "./../../../axios-api/AuthAPI";
 
 // REACT IMPORTS
 import React, {

@@ -1,5 +1,5 @@
 // AXIOS IMPORT
-import AuthAPI from "./../axios/AuthAPI";
+import AuthAPI from "../axios-api/AuthAPI";
 
 // REACT IMPORTS
 import React, { useState, useEffect } from "react";
@@ -25,7 +25,7 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import TextField from "@material-ui/core/TextField";
 
 // COMPONENTS
-import { DashboardNavigation } from "./DashNavigation";
+import { DashboardNavigation } from "../components/dashboard/DashNavigation";
 
 // MATERIAL UI STYLING
 const useStyles = makeStyles((theme) => ({

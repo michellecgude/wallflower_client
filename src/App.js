@@ -8,11 +8,11 @@ import { Route } from "react-router-dom";
 import WallflowerContext from "./WallflowerContext";
 
 // COMPONENTS
-import LandingPage from "./components/LandingPage";
+import Homepage from "./pages/Homepage";
 import UserRegister from "./components/user_auth/register/UserRegister";
 import UserLogin from "./components/user_auth/login/UserLogin";
-import MoodPrompt from "./components/MoodPrompt";
-import Dashboard from "./components/dashboard/Dashboard";
+import MoodPrompt from "./components/dashboard/moods/MoodPrompt";
+import Dashboard from "./pages/Dashboard";
 import MoodBoard from "./components/dashboard/moods/MoodBoard";
 import AddMoods from "./components/dashboard/moods/AddMoods";
 import MeditationBoard from "./components/dashboard/meditations/MeditationBoard";
@@ -21,7 +21,7 @@ import UpliftingBoard from "./components/dashboard/upliftingcontent/UpliftingBoa
 import AddUpliftingContent from "./components/dashboard/upliftingcontent/AddUpliftingContent";
 
 // CSS
-import "./App.css";
+import "./styles/App.scss";
 
 export default function App() {
   // USE STATE VARIABLES
@@ -51,7 +51,7 @@ export default function App() {
           setUplifting,
         }}
       >
-        <Route exact path="/" component={LandingPage} />
+        <Route exact path="/" component={Homepage} />
         <Route exact path="/register" component={UserRegister} />
         <Route exact path="/login" component={UserLogin} />
         <Route exact path="/howareyou/" component={MoodPrompt} />
