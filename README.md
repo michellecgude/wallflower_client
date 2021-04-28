@@ -28,7 +28,6 @@ This app best serves those who are:
 > - Frontline Healthcare Workers
 > - Recently unemployed
 > - Mourning the loss of a loved one to the disease
-> - Currently sick (or had been sick) with COVID-19
 > - Struggling with pre-existing mental health conditions such as depression, anxiety, and/or OCD.
 > - Feeling lonely or isolated due to social distancing
 
