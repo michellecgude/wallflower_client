@@ -1,4 +1,15 @@
-  // LOGOUT HANDLE (MOVE TO OWN PAGE?)
+{% comment %} PACKAGES YOU'RE USING : {% endcomment %}
+framer motion : https://www.framer.com/motion/
+horizontal (for horizontal scrolling) : http://bit.ly/horizontal-github
+gsap : https://greensock.com/ 
+react gsap : https://github.com/bitworking/react-gsap
+
+
+
+
+
+
+{% comment %} OLD CODE FOR REF : {% endcomment %}
   const handleLogout = async () => {
     try {
       const response = await AuthAPI.post("blacklistoken/", {
