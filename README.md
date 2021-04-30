@@ -1,8 +1,17 @@
 ![Wallflower banner image](https://i.ibb.co/Q9tPWYY/wallflower-github-banner.png)
 
-### _The frontend UX/UI is currently under construction._
+---
 
-### If you'd like to take a peak at the finished server-side repository built via Django/Python/PostgreSQL, please [click here](https://github.com/michellecgude/wallflower_server).
+### Please Read the Following:
+
+The UX/UI currently under construction. If you'd like to take a peak at the finished server-side repository built via Django/Python/PostgreSQL, please [click here](https://github.com/michellecgude/wallflower_server).
+
+To view the finished wireframes that I am working off of to build the final product, feel free to view the product and prototypes via these links below. All that you see is designed by me.
+
+> - [Wallflower Landing/Homepage](https://www.figma.com/file/j5MhaL5vLUckgi5mOKQwRB/%F0%9F%8C%BC-%F0%9F%8C%BC-%F0%9F%8C%BC?node-id=390%3A296)
+> - [Prototype for Application](https://www.figma.com/proto/j5MhaL5vLUckgi5mOKQwRB/%F0%9F%8C%BC-%F0%9F%8C%BC-%F0%9F%8C%BC?node-id=390%3A1173&viewport=4120%2C1586%2C0.125&scaling=min-zoom&page-id=226%3A283%3Ffuid%3D921257456550100800)
+
+---
 
 #### Important Health Disclaimer:
 
