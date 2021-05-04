@@ -1,0 +1,109 @@
+@import "../node_modules/font-face-generator/mixin";
+
+@include font-face(
+  (
+    "Bogart": (
+      100: (
+        normal: "BogartExtraLight",
+        italic: "BogartExtraLightItalic",
+      ),
+      200: (
+        normal: "BogartThin",
+        italic: "BogartThinItalic",
+      ),
+      300: (
+        normal: "BogartLight",
+        italic: "BogartLightItalic",
+      ),
+      400: (
+        normal: "BogartRegular",
+        italic: "BogartItalic",
+      ),
+      500: (
+        normal: "BogartMedium",
+        italic: "BogartMediumItalic",
+      ),
+      600: (
+        normal: "BogartSemiBold",
+        italic: "BogartSemiBoldItalic",
+      ),
+      700: (
+        normal: "BogartBold",
+        italic: "BogartBoldItalic",
+      ),
+      800: (
+        normal: "BogartExtraBold",
+        italic: "BogartExtraBoldItalic",
+      ),
+      900: (
+        normal: "BogartBlack",
+        italic: "BogartBlackItalic",
+      ),
+    ),
+    "IBM Plex Mono": (
+      100: (
+        normal: "IBMPlexMonoExtraLight",
+        italic: "IBMPlexMonoExtraLightItalic",
+      ),
+      200: (
+        normal: "IBMPlexMonoThin",
+        italic: "IBMPlexMonoThinItalic",
+      ),
+      300: (
+        normal: "IBMPlexMonoLight",
+        italic: "IBMPlexMonoLightItalic",
+      ),
+      400: (
+        normal: "IBMPlexMonoRegular",
+        italic: "IBMPlexMonoItalic",
+      ),
+      500: (
+        normal: "IBMPlexMonoMedium",
+        italic: "IBMPlexMonoMediumItalic",
+      ),
+      600: (
+        normal: "IBMPlexMonoSemiBold",
+        italic: "IBMPlexMonoSemiBoldItalic",
+      ),
+      700: (
+        normal: "IBMPlexMonoBold",
+        italic: "IBMPlexMonoBoldItalic",
+      ),
+    ),
+    "Karla Font": (
+      000: (
+        normal: "KarlaVariableFont",
+        italic: "KarlaVariableFontItalic",
+      )
+      100:
+      (
+        normal: "KarlaExtraLight",
+        italic: "KarlaExtraLightItalic",
+      ),
+      200: (
+        normal: "KarlaThin",
+        italic: "KarlaThinItalic",
+      ),
+      300: (
+        normal: "KarlaLight",
+        italic: "KarlaLightItalic",
+      ),
+      400: (
+        normal: "KarlaRegular",
+        italic: "KarlaItalic",
+      ),
+      500: (
+        normal: "KarlaMedium",
+        italic: "KarlaMediumItalic",
+      ),
+      600: (
+        normal: "KarlaSemiBold",
+        italic: "KarlaSemiBoldItalic",
+      ),
+      700: (
+        normal: "KarlaBold",
+        italic: "KarlaBoldItalic",
+      ),
+    ),
+  )
+);
