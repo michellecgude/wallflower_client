@@ -13,6 +13,13 @@ To view the finished wireframes that I am working off of to build the final prod
 
 ---
 
+### Fonts used:
+
+> - **Bogart Family** _by ZetaFonts (Trial, Non-Commercial Version)_ : https://www.zetafonts.com/bogart
+> - **Karla** _by Jonny Pinhorn (Google Fonts)_ : https://fonts.google.com/specimen/Karla
+
+> - **IBM Plex Mono** _by IBM_ : https://www.ibm.com/plex/plexness/#mono-for-coding
+
 #### Important Health Disclaimer:
 
 > _This app is not meant to professionally treat trauma, PTSD, or any other medical conditions. It is simply a passion project born out of an attempt to make something functional, beautiful, and helpful to others._
