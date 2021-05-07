@@ -6,14 +6,12 @@ import { Route } from "react-router-dom";
 import "./styles/App.scss";
 
 // COMPONENT IMPORTS
-import Register from "./components/user_auth/Register.jsx";
-import Login from "./components/user_auth/Login.jsx";
+import Landing from "./components/Landing.jsx";
 
 function App() {
   return (
     <div className="App">
-      <Route exact path="/register" component={Register} />
-      <Route exact path="/login" component={Login} />
+      <Route exact path="/" component={Landing} />
     </div>
   );
 }
